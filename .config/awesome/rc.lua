@@ -237,28 +237,28 @@ awful.screen.connect_for_each_screen(function(s)
         { -- Right widgets
             layout = wibox.layout.fixed.horizontal,
             wibox.widget.systray(),
-            require("battery-widget") {
-                    ac = "AC",
-                    adapter = "BAT0",
-                    ac_prefix = "AC:",
-                    battery_prefix = "Bat:",
-                    limits = {
-                            { 25, "red" },
-                            { 50, "orange"},
-                            {100, "green"}
-                        },
-                    listen = true,
-                    timeout = 10,
-                    widget_text = "${AC_BAT}${color_on}${percent}%${color_off}",
-                    widget_font = "Liberation Mono 9",
-                    tooltip_text = "Battery ${state}${time_est}\nCapacity: ${percent}%",
-                    alert_threshold = 10,
-                    alert_timeout = 0,
-                    alert_title = "Low battery !",
-                    alert_text = "${AC_BAT}${time_est}",
-                    warn_full_battery = false
-                    },
-            batterywidget,
+            --require("battery-widget") {
+            --        ac = "AC",
+            --        adapter = "BAT0",
+            --        ac_prefix = "AC:",
+            --        battery_prefix = "Bat:",
+            --        limits = {
+            --                { 25, "red" },
+            --                { 50, "orange"},
+            --                {100, "green"}
+            --            },
+            --        listen = true,
+            --        timeout = 10,
+            --        widget_text = "${AC_BAT}${color_on}${percent}%${color_off}",
+            --        widget_font = "Liberation Mono 9",
+            --        tooltip_text = "Battery ${state}${time_est}\nCapacity: ${percent}%",
+            --        alert_threshold = 10,
+            --        alert_timeout = 0,
+            --        alert_title = "Low battery !",
+            --        alert_text = "${AC_BAT}${time_est}",
+            --        warn_full_battery = false
+            --        },
+            --batterywidget,
             mytextclock,
             s.mylayoutbox,
         },
@@ -381,8 +381,6 @@ globalkeys = gears.table.join(
 
     -- Replace opening of default terminal with one running custom tmux launch script
 	awful.key({ modkey }, "Return", function () awful.util.spawn_with_shell("xfce4-terminal --disable-server -x $HOME/.tmux/tmux_tile_launcher.sh") end),
-    -- Run i3lock wrapper with Alt + l	
-        awful.key({ "Mod1" }, "l", function () awful.util.spawn_with_shell("$HOME/.config/awesome/i3lock-wrapper.sh") end),
 
 	-- Bind thinkpad volume and launch buttons
     awful.key({}, "XF86Launch1", function () awful.util.spawn_with_shell("pactl -- set-sink-volume 0 +5%") end),
